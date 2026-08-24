@@ -1,0 +1,706 @@
+:root {
+  --bg: #08090c;
+  --bg-elev: #131620;
+  --bg-elev-2: #1a1e2b;
+  --rule: #262b38;
+  --rule-strong: #3c4256;
+  --text: #eef0f6;
+  --text-dim: #9aa1b8;
+  --text-faint: #5b6178;
+  --accent: #e8323f;
+  --accent-strong: #ff4b58;
+  --gold: #e8b94d;
+  --gold-dim: rgba(232, 185, 77, 0.14);
+  --shadow: rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: radial-gradient(
+      ellipse 90% 55% at 50% -8%,
+      rgba(232, 50, 63, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 65% 45% at 92% 105%,
+      rgba(232, 185, 77, 0.08),
+      transparent 60%
+    ),
+    var(--bg);
+  color: var(--text);
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.hairlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 64px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 64px
+    );
+  mask-image: radial-gradient(
+    ellipse 80% 70% at 50% 15%,
+    black,
+    transparent 75%
+  );
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- eyebrow / labels ---------- */
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px 1px var(--accent);
+  display: inline-block;
+  flex: none;
+}
+
+/* ---------- hero / index ---------- */
+
+.hero {
+  padding: 64px 0 24px;
+}
+h1.title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(38px, 6.2vw, 76px);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #d9dce6 55%, #a7adbe 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+h1.title em {
+  font-style: italic;
+  color: var(--accent-strong);
+  -webkit-text-fill-color: var(--accent-strong);
+}
+.subhead {
+  margin: 18px 0 0;
+  max-width: 58ch;
+  color: var(--text-dim);
+  font-size: 16.5px;
+  line-height: 1.6;
+}
+
+.roster {
+  margin: 44px 0 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+  background: var(--bg-elev);
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  opacity: 0;
+  animation: tile-in 0.5s ease forwards;
+  animation-delay: calc(var(--i, 0) * 35ms);
+  transition: transform 0.22s ease, border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tile:hover,
+.tile:focus-visible {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px -16px var(--shadow), 0 0 0 1px var(--gold-dim);
+  outline: none;
+}
+.tile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.06);
+  transition: transform 0.5s ease;
+}
+.tile:hover .tile-img {
+  transform: scale(1.06);
+}
+.tile-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 9, 12, 0) 40%,
+    rgba(8, 9, 12, 0.6) 72%,
+    rgba(8, 9, 12, 0.95) 100%
+  );
+}
+.tile-num {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  background: rgba(8, 9, 12, 0.55);
+  padding: 3px 7px;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+}
+.tile-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 13px 14px;
+}
+.tile-name {
+  display: block;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.08;
+}
+.tile-tag {
+  display: block;
+  margin-top: 3px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.tile-tag-char {
+  color: var(--gold);
+}
+
+/* character art tiles */
+.tile.has-character {
+  background: radial-gradient(
+      ellipse 90% 70% at 50% 100%,
+      rgba(232, 50, 63, 0.16),
+      transparent 70%
+    ),
+    var(--bg-elev);
+}
+.tile-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 55% at 50% 62%,
+    var(--gold-dim),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.tile-char {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 94%;
+  width: auto;
+  max-width: none;
+  transform: translateX(-50%);
+  object-fit: contain;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.65));
+  transition: transform 0.4s ease;
+}
+.tile:hover .tile-char {
+  transform: translateX(-50%) translateY(-4px) scale(1.045);
+}
+.tile-alts {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 2;
+}
+.tile-alts img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border: 1px solid var(--rule-strong);
+  background: var(--bg-elev-2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+/* "can coach anyone" -- a corner ribbon laid right over the big portrait,
+   instead of a small badge, so it reads at a glance next to the main art. */
+.all-ribbon {
+  position: absolute;
+  z-index: 3;
+  top: 17px;
+  right: -46px;
+  width: 170px;
+  transform: rotate(40deg);
+  transform-origin: center;
+  text-align: center;
+  padding: 4px 0 3px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #17130a;
+  background: linear-gradient(180deg, #f6cf74, var(--gold));
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.55);
+  cursor: default;
+  pointer-events: none;
+}
+.profile-portrait .all-ribbon {
+  top: 14px;
+  right: -44px;
+  width: 150px;
+  font-size: 10px;
+}
+
+/* Split tile: main character on the left, "plays everyone" panel on the
+   right -- keeps the alt-character badges (top right of the character half)
+   clear of the all-characters call-out instead of overlapping it. */
+.tile-split {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.tile-split-char {
+  position: relative;
+  flex: 1 1 64%;
+  overflow: hidden;
+}
+.tile-split-char .tile-char {
+  height: 94%;
+}
+.tile-split-all {
+  position: relative;
+  flex: 0 0 36%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 6px;
+  border-left: 1px solid var(--rule-strong);
+  background: linear-gradient(180deg, rgba(232, 185, 77, 0.1), transparent 45%),
+    var(--bg-elev-2);
+}
+.tile-split-all .tile-alts {
+  position: static;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tile-split-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  width: 100%;
+}
+.tile-split-mosaic img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 50% 15%;
+  border-radius: 2px;
+  filter: saturate(0.45) brightness(0.55);
+}
+.tile-split-label {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gold);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* "plays everyone" roster-wall tile */
+.tile-mosaic {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  padding: 2px;
+}
+.tile-mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 12%;
+  filter: saturate(0.35) brightness(0.5);
+  transition: filter 0.3s ease;
+}
+.tile.has-mosaic:hover .tile-mosaic img {
+  filter: saturate(0.7) brightness(0.7);
+}
+.tile-mosaic-badge {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 20%;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.85), 0 0 2px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+/* ---------- profile page ---------- */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 40px 0 30px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+.back-link:hover {
+  color: var(--gold);
+}
+
+.profile-wrap {
+  padding-bottom: 100px;
+}
+
+.profile-head {
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: 28px;
+  align-items: end;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 520px) {
+  .profile-head {
+    grid-template-columns: 96px 1fr;
+    gap: 16px;
+  }
+  .profile-portrait .tile-mosaic-badge {
+    font-size: 11px;
+  }
+}
+.profile-portrait {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 24px 48px -20px var(--shadow);
+}
+.profile-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-portrait.has-character {
+  background: var(--bg-elev);
+}
+.profile-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 65% 60% at 50% 60%,
+    var(--gold-dim),
+    transparent 72%
+  );
+  pointer-events: none;
+}
+.profile-portrait img.profile-char {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 96%;
+  width: auto;
+  max-width: none;
+  transform: translateX(-50%);
+  object-fit: contain;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.6));
+}
+.profile-num {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  background: rgba(8, 9, 12, 0.6);
+  padding: 2px 6px;
+  border: 1px solid var(--rule-strong);
+}
+.profile-name {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(32px, 5vw, 54px);
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 0 6px;
+}
+.profile-tag {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13.5px;
+  color: var(--gold);
+}
+
+.stage {
+  position: relative;
+  margin-top: 36px;
+  border: 1px solid var(--rule-strong);
+  background: #000;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.stage-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+.stage-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.stage-corner.tl {
+  top: 8px;
+  left: 8px;
+  border-width: 2px 0 0 2px;
+}
+.stage-corner.tr {
+  top: 8px;
+  right: 8px;
+  border-width: 2px 2px 0 0;
+}
+.stage-corner.bl {
+  bottom: 8px;
+  left: 8px;
+  border-width: 0 0 2px 2px;
+}
+.stage-corner.br {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 2px 2px 0;
+}
+.stage-label {
+  position: absolute;
+  top: 10px;
+  left: 36px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.sheet {
+  margin-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.stat {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 620px) {
+  .stat {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+.stat-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding-top: 2px;
+}
+.stat-value {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text);
+}
+.stat-value.emphasis {
+  color: var(--text);
+  font-size: 16px;
+}
+.stat-value p {
+  margin: 0 0 0.8em;
+}
+.stat-value p:last-child {
+  margin-bottom: 0;
+}
+
+.cta-row {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.cta-box {
+  border: 1px solid var(--rule-strong);
+  background: var(--bg-elev);
+  padding: 14px 20px;
+  border-radius: 2px;
+}
+.cta-label {
+  margin: 0 0 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.cta-discord {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 15px;
+  color: var(--gold);
+}
+.cta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  padding: 14px 26px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+.cta:hover {
+  background: var(--accent-strong);
+  box-shadow: 0 10px 26px -10px rgba(232, 50, 63, 0.6);
+  transform: translateY(-1px);
+}
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 22px 0 48px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .tile-img,
+  .cta {
+    transition: none;
+    animation: none;
+    opacity: 1;
+  }
+}

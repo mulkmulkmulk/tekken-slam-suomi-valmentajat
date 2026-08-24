@@ -1,0 +1,13 @@
+{
+  "name": "tekken-slam-valmentajat",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "csv": "node build/parse-csv.mjs",
+    "media": "node build/process-media.mjs",
+    "characters": "node build/process-characters.mjs",
+    "site": "node build/generate-site.mjs",
+    "build": "npm run csv && npm run site",
+    "serve": "node build/serve.mjs"
+  }
+}
