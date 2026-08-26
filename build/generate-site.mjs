@@ -74,6 +74,11 @@ const CHARACTER_NAMES = {
   feng: "Feng",
   shaheen: "Shaheen",
   lili: "Lili",
+  eddy: "Eddy",
+  jin: "Jin",
+  bob: "Bob",
+  clive: "Clive",
+  victor: "Victor",
 };
 
 // A varied 9-face roster wall for coaches who play "everyone" instead of one
@@ -141,12 +146,12 @@ function mosaicArt(prefix = "") {
         <span class="tile-mosaic-badge">KAIKKI<br>HAHMOT</span>`;
 }
 
-function tileAlts(c) {
+function tileAlts(c, prefix = "") {
   if (!c.altCharacters.length) return "";
   const icons = c.altCharacters
     .map(
       (slug) =>
-        `<img src="media/characters/${slug}-icon.png" alt="${esc(
+        `<img src="${prefix}media/characters/${slug}-icon.png" alt="${esc(
           CHARACTER_NAMES[slug] || slug
         )}" title="${esc(CHARACTER_NAMES[slug] || slug)}">`
     )
@@ -284,6 +289,7 @@ for (const c of coaches) {
       <p class="eyebrow"><span class="dot"></span>Valmentajaprofiili</p>
       <h1 class="profile-name">${esc(c.name)}</h1>
       ${c.mainCharacter ? `<p class="profile-tag">${esc(CHARACTER_NAMES[c.mainCharacter] || c.mainCharacter)}${c.tag ? ` &middot; ${esc(c.tag)}` : ""}</p>` : c.allCharacters ? `<p class="profile-tag">Kaikki hahmot</p>` : c.tag ? `<p class="profile-tag">${esc(c.tag)}</p>` : ""}
+      ${c.altCharacters.length ? `<div class="profile-alts">${tileAlts(c, "../../")}</div>` : ""}
     </div>
   </div>
 

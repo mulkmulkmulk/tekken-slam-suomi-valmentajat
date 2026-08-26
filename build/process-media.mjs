@@ -178,6 +178,31 @@ const results = [];
 for (const coach of targets) {
   console.log(`\n=== ${coach.name} ===`);
 
+  if (coach.preEdited) {
+    // Already has the music mixed in by hand -- used verbatim, no re-encode
+    // or music mux. We only derive the poster frames from it.
+    const src = path.join(REPLAT_DIR, coach.videoParts[0]);
+    const finalVideo = path.join(MEDIA_DIR, `${coach.slug}.mp4`);
+    console.log("  copying pre-edited video as-is");
+    fs.copyFileSync(src, finalVideo);
+
+    const duration = probeDuration(finalVideo);
+    console.log(`  duration: ${duration.toFixed(2)}s`);
+
+    const poster = path.join(MEDIA_DIR, `${coach.slug}.jpg`);
+    console.log("  extracting poster frame");
+    makePoster(finalVideo, poster, duration);
+
+    const widePoster = path.join(MEDIA_DIR, `${coach.slug}-wide.jpg`);
+    makeWidePoster(finalVideo, widePoster, duration);
+
+    const finalSize = fs.statSync(finalVideo).size;
+    console.log(`  done: ${(finalSize / 1024 / 1024).toFixed(1)}MB`);
+
+    results.push({ slug: coach.slug, duration, sizeMB: finalSize / 1024 / 1024 });
+    continue;
+  }
+
   const partOutputs = coach.videoParts.map((part, i) => {
     const src = path.join(REPLAT_DIR, part);
     const out = path.join(TMP_DIR, `${coach.slug}_part${i}.mp4`);

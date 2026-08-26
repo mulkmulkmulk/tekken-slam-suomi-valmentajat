@@ -25,13 +25,18 @@ function ffmpeg(args) {
 }
 
 for (const slug of slugs) {
+  const big = path.join(OUT_DIR, `${slug}.png`);
+  const icon = path.join(OUT_DIR, `${slug}-icon.png`);
+
+  if (fs.existsSync(big) && fs.existsSync(icon)) {
+    console.log(`  ${slug}: already processed, skipping`);
+    continue;
+  }
+
   const src = path.join(SRC_DIR, `${slug}-portrait.png`);
   if (!fs.existsSync(src)) {
     throw new Error(`Missing downloaded portrait for "${slug}": ${src}`);
   }
-
-  const big = path.join(OUT_DIR, `${slug}.png`);
-  const icon = path.join(OUT_DIR, `${slug}-icon.png`);
 
   ffmpeg(["-i", src, "-vf", "scale=640:640", big]);
   ffmpeg(["-i", src, "-vf", "scale=120:120", icon]);

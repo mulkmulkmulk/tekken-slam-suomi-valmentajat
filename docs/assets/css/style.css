@@ -537,6 +537,22 @@ h1.title em {
   color: var(--gold);
 }
 
+/* Reuses the roster tile's alt-character badges, but laid out as a plain
+   horizontal row under the name instead of the tile's absolute corner stack
+   -- keeps it clear of the diagonal "+ Kaikki hahmot" ribbon on the portrait. */
+.profile-alts {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile-alts .tile-alts {
+  position: static;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .stage {
   position: relative;
   margin-top: 36px;

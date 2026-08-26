@@ -1,3 +1,13 @@
+// Default playback volume for the replay clips (viewers can still adjust
+// with the player's own volume slider). 1.0 = 100%.
+(function () {
+  var DEFAULT_VOLUME = 0.4;
+  var videos = document.querySelectorAll(".stage-video");
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].volume = DEFAULT_VOLUME;
+  }
+})();
+
 // Arrow-key navigation across the roster grid, character-select style.
 (function () {
   var roster = document.getElementById("roster");

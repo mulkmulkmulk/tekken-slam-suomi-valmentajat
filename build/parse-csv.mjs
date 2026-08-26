@@ -1,6 +1,7 @@
 import fs from "node:fs";
+import { SRC_ROOT } from "./coach-map.mjs";
 
-const src = "C:/Users/mulk/Desktop/tekken slam suomi materiaalit/csv/Tekken Coach Info.csv";
+const src = `${SRC_ROOT}/csv/Tekken Coach Info.csv`;
 const data = fs.readFileSync(src, "utf-8");
 
 function parseCSV(text) {

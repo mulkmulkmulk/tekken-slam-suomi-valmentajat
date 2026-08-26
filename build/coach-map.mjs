@@ -4,7 +4,7 @@
 // folders, then add one entry here and rerun `node build/process-media.mjs`
 // followed by `node build/generate-site.mjs`.
 
-export const SRC_ROOT = "C:/Users/mulk/Desktop/tekken slam suomi materiaalit";
+export const SRC_ROOT = "C:/Users/kalle/Desktop/claude/tekken slam suomi materiaalit";
 export const REPLAT_DIR = `${SRC_ROOT}/replat`;
 export const MUSAT_DIR = `${SRC_ROOT}/musat`;
 
@@ -26,21 +26,6 @@ export const coaches = [
     musicStart: 300,
     mainCharacter: "jun",
     altCharacters: ["dragunov", "xiaoyu", "kunimitsu", "miary-zo"],
-  },
-  {
-    key: "tilis",
-    slug: "tilis",
-    name: "tilis",
-    tag: null,
-    videoParts: ["tilis.mp4"],
-    trimStart: 0,
-    music: "tilis 0000-0100.opus",
-    musicStart: 0,
-    // "Kaikki" (plays everyone) -- no single main, so the tile shows a
-    // roster-mosaic instead of one character.
-    mainCharacter: null,
-    altCharacters: [],
-    allCharacters: true,
   },
   {
     key: "Julumettu / Joulumehu",
@@ -252,6 +237,73 @@ export const coaches = [
     helpsAllCharacters: true,
   },
   {
+    key: "jarsos",
+    slug: "jarsos",
+    name: "jarsos",
+    tag: null,
+    videoParts: ["jarsos.mp4"],
+    trimStart: 0,
+    music: "jarsos 0219-0307.opus",
+    musicStart: 139,
+    // "Eddy & Bryan" -- both named together as mains; Eddy picked first.
+    mainCharacter: "eddy",
+    altCharacters: ["bryan", "armor-king", "jack-8"],
+  },
+  {
+    key: "erkkas & erkka",
+    slug: "erkka",
+    name: "erkka",
+    tag: "erkkas",
+    // Pre-edited clip already has the chosen music mixed in -- used as-is,
+    // see `preEdited` handling in process-media.mjs (no separate music mux).
+    videoParts: ["erkka - edited.mp4"],
+    trimStart: 0,
+    preEdited: true,
+    mainCharacter: "jin",
+    altCharacters: ["kazuya", "paul", "yoshimitsu", "armor-king"],
+    // Listed 20 characters (basically the whole roster) -- shown as the
+    // "+ KAIKKI HAHMOT" split panel instead of trying to cram them all in.
+    helpsAllCharacters: true,
+  },
+  {
+    key: "Munapoolo",
+    slug: "munapoolo",
+    name: "Munapoolo",
+    tag: null,
+    videoParts: ["munapoolo.mp4"],
+    trimStart: 0,
+    music: "munapoolo 0100-0200.opus",
+    musicStart: 60,
+    mainCharacter: "clive",
+    altCharacters: ["victor"],
+  },
+  {
+    key: "zoomoo",
+    slug: "zoomoo",
+    name: "zoomoo",
+    tag: null,
+    videoParts: ["zoomoo.mp4"],
+    trimStart: 0,
+    music: "zoomoo 0000-0100.opus",
+    musicStart: 0,
+    mainCharacter: "paul",
+    altCharacters: [],
+  },
+  {
+    key: "Dankplank",
+    slug: "dankplank",
+    name: "Dankplank",
+    tag: null,
+    videoParts: ["dankplank.mkv"],
+    trimStart: 0,
+    music: "dankplank 0004-0100.opus",
+    musicStart: 4,
+    // "Bob" isn't in the Tekken 8 roster okizeme.gg covers (same call as
+    // OmnidE) -- skipped from alt icons, still listed in the profile text.
+    mainCharacter: "steve",
+    altCharacters: ["fahkumram", "lee", "paul", "law"],
+  },
+  {
     key: "OmnidE",
     slug: "omnide",
     name: "OmnidE",
@@ -260,9 +312,8 @@ export const coaches = [
     trimStart: 0,
     music: "omnide 0050-0150.opus",
     musicStart: 50,
-    // "Shaheen, leo, bob, feng" -- Bob isn't in the Tekken 8 roster okizeme.gg
-    // covers, so he's skipped from the alt icons (still listed in the text).
+    // "Shaheen, leo, bob, feng"
     mainCharacter: "shaheen",
-    altCharacters: ["leo", "feng"],
+    altCharacters: ["leo", "bob", "feng"],
   },
 ];
