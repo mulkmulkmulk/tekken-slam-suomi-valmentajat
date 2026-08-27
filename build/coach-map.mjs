@@ -149,10 +149,10 @@ export const coaches = [
     slug: "karstafari",
     name: "KarstaFari",
     tag: null,
-    videoParts: ["karstafari.mp4"],
+    // Fully edited clip -- already has the chosen music mixed in, used as-is.
+    videoParts: ["karstafari - edited.mp4"],
     trimStart: 0,
-    music: "karstafari 0550-0700.opus",
-    musicStart: 350,
+    preEdited: true,
     mainCharacter: "armor-king",
     altCharacters: ["heihachi"],
   },
