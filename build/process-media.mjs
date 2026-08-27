@@ -46,10 +46,12 @@ function probeDuration(file) {
   );
 }
 
-// Normalize one source clip to 1280x720/30fps/h264, video-only, optionally
-// trimming `trimStart` seconds off the front. Crops ultra-wide captures to
-// 16:9 first so gameplay isn't squished.
-function normalizePart(srcFile, outFile, trimStart) {
+// Normalize one source clip to 1280x720/30fps/h264, optionally trimming
+// `trimStart` seconds off the front. Crops ultra-wide captures to 16:9 first
+// so gameplay isn't squished. Video-only by default (audio comes from a
+// separate music track later); pass `keepAudio` for pre-edited clips that
+// already have their own mixed-in audio worth preserving.
+function normalizePart(srcFile, outFile, trimStart, keepAudio = false) {
   const { width, height } = probeSize(srcFile);
   const ratio = width / height;
   const vf = [];
@@ -61,10 +63,9 @@ function normalizePart(srcFile, outFile, trimStart) {
 
   const args = [];
   if (trimStart > 0) args.push("-ss", String(trimStart));
+  args.push("-i", srcFile);
+  if (!keepAudio) args.push("-an");
   args.push(
-    "-i",
-    srcFile,
-    "-an",
     "-vf",
     vf.join(","),
     "-r",
@@ -80,9 +81,10 @@ function normalizePart(srcFile, outFile, trimStart) {
     "-bufsize",
     "6000k",
     "-pix_fmt",
-    "yuv420p",
-    outFile
+    "yuv420p"
   );
+  if (keepAudio) args.push("-c:a", "aac", "-b:a", "160k");
+  args.push(outFile);
   ffmpeg(args, path.basename(srcFile));
 }
 
@@ -179,12 +181,26 @@ for (const coach of targets) {
   console.log(`\n=== ${coach.name} ===`);
 
   if (coach.preEdited) {
-    // Already has the music mixed in by hand -- used verbatim, no re-encode
-    // or music mux. We only derive the poster frames from it.
-    const src = path.join(REPLAT_DIR, coach.videoParts[0]);
+    // Already has the chosen music mixed in by hand -- no separate music
+    // mux, but still needs the normal resize/bitrate pass: source exports
+    // can be several GB (e.g. straight-off-OBS 4K captures), which would
+    // blow past GitHub's 100MB/file limit if copied verbatim.
+    const partOutputs = coach.videoParts.map((part, i) => {
+      const src = path.join(REPLAT_DIR, part);
+      const out = path.join(TMP_DIR, `${coach.slug}_part${i}.mp4`);
+      const trim = i === 0 ? coach.trimStart : 0;
+      console.log(`  normalizing ${part} (trim ${trim}s, keeping original audio)`);
+      normalizePart(src, out, trim, true);
+      return out;
+    });
+
     const finalVideo = path.join(MEDIA_DIR, `${coach.slug}.mp4`);
-    console.log("  copying pre-edited video as-is");
-    fs.copyFileSync(src, finalVideo);
+    if (partOutputs.length > 1) {
+      console.log("  concatenating parts");
+      concatParts(partOutputs, finalVideo);
+    } else {
+      fs.copyFileSync(partOutputs[0], finalVideo);
+    }
 
     const duration = probeDuration(finalVideo);
     console.log(`  duration: ${duration.toFixed(2)}s`);

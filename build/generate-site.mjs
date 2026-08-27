@@ -77,6 +77,8 @@ const CHARACTER_NAMES = {
   eddy: "Eddy",
   jin: "Jin",
   bob: "Bob",
+  lidia: "Lidia",
+  raven: "Raven",
   clive: "Clive",
   victor: "Victor",
 };
