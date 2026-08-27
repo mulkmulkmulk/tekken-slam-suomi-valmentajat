@@ -62,7 +62,7 @@ export const coaches = [
   {
     key: "lolzben, D;ewdben",
     slug: "dweben",
-    name: "dweben",
+    name: "D;ewdben",
     tag: "lolzben",
     videoParts: ["dweben osa1.mp4", "dweben osa2.mp4"],
     trimStart: 0,
