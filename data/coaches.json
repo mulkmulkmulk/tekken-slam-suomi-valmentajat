@@ -1,5 +1,26 @@
 [
   {
+    "slug": "adeelfury",
+    "name": "adeelfury",
+    "tag": null,
+    "characters": "Victor, Yoshimitsu",
+    "experience": "GOD 3. Currently Finland's biggest Tekken YouTuber.",
+    "specialty": "good with mixups and aggressive with the gameplay",
+    "style": "video, streaming, verbal, I am open to any sort of coaching style. Coaching will likely be in English.",
+    "availability": "Mostly evenings and weekends",
+    "description": "I am cool, calm, and friendly. start abusing gameplay from time to time.",
+    "discord": "adeelfury",
+    "video": "media/adeelfury.mp4",
+    "poster": "media/adeelfury.jpg",
+    "posterWide": "media/adeelfury-wide.jpg",
+    "mainCharacter": "victor",
+    "altCharacters": [
+      "yoshimitsu"
+    ],
+    "allCharacters": false,
+    "helpsAllCharacters": false
+  },
+  {
     "slug": "akir4",
     "name": "akir4",
     "tag": ".akir4.",

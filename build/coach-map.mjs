@@ -18,6 +18,18 @@ export const MUSAT_DIR = `${SRC_ROOT}/musat`;
 // P01, P02... numbering and tile order on the site.
 export const coaches = [
   {
+    key: "adeelfury",
+    slug: "adeelfury",
+    name: "adeelfury",
+    tag: null,
+    videoParts: ["adeelfury.mkv"],
+    trimStart: 0,
+    music: "adeelfury 0000-0100.opus",
+    musicStart: 0,
+    mainCharacter: "victor",
+    altCharacters: ["yoshimitsu"],
+  },
+  {
     key: "akir4 ja .akir4.",
     slug: "akir4",
     name: "akir4",
