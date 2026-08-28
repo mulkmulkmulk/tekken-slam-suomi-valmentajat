@@ -88,6 +88,21 @@ export const coaches = [
     helpsAllCharacters: true,
   },
   {
+    key: "FinnishMate",
+    slug: "finnishmate",
+    name: "FinnishMate",
+    tag: null,
+    videoParts: ["finnishmate.mp4"],
+    trimStart: 0,
+    music: "finnishmate 0038-0130.opus",
+    musicStart: 38,
+    mainCharacter: "steve",
+    altCharacters: [],
+    // "Steve, kaikki paitsi hwoa & mishimat" -- plays/coaches everyone
+    // except Hwoarang and the Mishima line (Kazuya/Jin/Devil Jin/Heihachi).
+    helpsAllCharacters: true,
+  },
+  {
     key: "Heddy, Heddyxo",
     slug: "heddy",
     name: "Heddy",
