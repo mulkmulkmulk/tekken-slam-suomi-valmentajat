@@ -18,6 +18,22 @@ export const MUSAT_DIR = `${SRC_ROOT}/musat`;
 // P01, P02... numbering and tile order on the site.
 export const coaches = [
   {
+    key: "akir4 ja .akir4.",
+    slug: "akir4",
+    name: "akir4",
+    tag: ".akir4.",
+    videoParts: ["akir4 part1.mp4", "akir4 part 2.mkv", "akir4 part 3.mkv"],
+    trimStart: 0,
+    music: "akir4 0005-0100.opus",
+    musicStart: 5,
+    // "ak ja vaikka coolmalet + nina" -- "ak" confirmed as Armor King by
+    // watching the footage (player tag "gamer" plays Armor King in all 3
+    // parts); "coolmalet" (freeform "the cool ones") too vague to map to
+    // specific characters, so only the explicitly named Nina is an alt.
+    mainCharacter: "armor-king",
+    altCharacters: ["nina"],
+  },
+  {
     key: "alika",
     slug: "alika",
     name: "alika",

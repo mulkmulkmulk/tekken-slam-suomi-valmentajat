@@ -1,5 +1,26 @@
 [
   {
+    "slug": "akir4",
+    "name": "akir4",
+    "tag": ".akir4.",
+    "characters": "ak ja vaikka coolmalet + nina",
+    "experience": "ei ole (paitsi dediksessä kattonu oman tiimin vodei)",
+    "specialty": "sellane ppp (peruspaskapelaamine)",
+    "style": "hyvällä miellelä",
+    "availability": "ammattikorkeessa käyn ja muutaki pelaan mut viesteihin vastaan!",
+    "description": "sellane ppp (peruspaskapelaamine)",
+    "discord": "akir4 ja .akir4.",
+    "video": "media/akir4.mp4",
+    "poster": "media/akir4.jpg",
+    "posterWide": "media/akir4-wide.jpg",
+    "mainCharacter": "armor-king",
+    "altCharacters": [
+      "nina"
+    ],
+    "allCharacters": false,
+    "helpsAllCharacters": false
+  },
+  {
     "slug": "alika",
     "name": "alika",
     "tag": null,
