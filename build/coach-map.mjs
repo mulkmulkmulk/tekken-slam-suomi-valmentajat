@@ -28,10 +28,13 @@ export const coaches = [
     musicStart: 5,
     // "ak ja vaikka coolmalet + nina" -- "ak" confirmed as Armor King by
     // watching the footage (player tag "gamer" plays Armor King in all 3
-    // parts); "coolmalet" (freeform "the cool ones") too vague to map to
-    // specific characters, so only the explicitly named Nina is an alt.
+    // parts). Clarified directly: helps with all male characters + Nina
+    // (Nina named explicitly since she's the one female-character exception)
+    // -- shown as the "+ Kaikki hahmot" split panel like other near-complete
+    // rosters (e.g. FinnishMate's "kaikki paitsi hwoa & mishimat").
     mainCharacter: "armor-king",
     altCharacters: ["nina"],
+    helpsAllCharacters: true,
   },
   {
     key: "alika",
