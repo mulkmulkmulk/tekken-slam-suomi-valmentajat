@@ -75,6 +75,7 @@ export const coaches = [
     // vahvuudet" (strengths in these) -- first-listed used as the main.
     mainCharacter: "azucena",
     altCharacters: ["paul", "king", "claudio", "asuka"],
+    helpsAllCharacters: true,
   },
   {
     key: "Dankplank",
