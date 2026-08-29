@@ -79,9 +79,7 @@
     "mainCharacter": "azucena",
     "altCharacters": [
       "paul",
-      "king",
-      "claudio",
-      "asuka"
+      "king"
     ],
     "allCharacters": false,
     "helpsAllCharacters": true

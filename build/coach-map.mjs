@@ -74,7 +74,10 @@ export const coaches = [
     // No single "main" stated -- "Azucena, Paul, King, Claudio, Asuka
     // vahvuudet" (strengths in these) -- first-listed used as the main.
     mainCharacter: "azucena",
-    altCharacters: ["paul", "king", "claudio", "asuka"],
+    // Trimmed to 2 alt icons (from the full 4) -- with helpsAllCharacters
+    // the split panel also has to fit the "+ Kaikki hahmot" mosaic/label,
+    // and 4 icons wrapping to two rows pushed the label out of view.
+    altCharacters: ["paul", "king"],
     helpsAllCharacters: true,
   },
   {
