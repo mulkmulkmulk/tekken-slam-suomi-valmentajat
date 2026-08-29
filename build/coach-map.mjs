@@ -69,8 +69,8 @@ export const coaches = [
     tag: "bigbosso",
     videoParts: ["bigboss.mp4"],
     trimStart: 0,
-    music: "bigboss 0018-0120.opus",
-    musicStart: 18,
+    music: "bigboss 0032-0132.opus",
+    musicStart: 32,
     // No single "main" stated -- "Azucena, Paul, King, Claudio, Asuka
     // vahvuudet" (strengths in these) -- first-listed used as the main.
     mainCharacter: "azucena",
