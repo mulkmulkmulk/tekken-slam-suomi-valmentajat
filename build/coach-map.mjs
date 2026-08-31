@@ -142,10 +142,11 @@ export const coaches = [
     slug: "heddy",
     name: "Heddy",
     tag: "Heddyxo",
-    videoParts: ["heddy.mp4"],
+    // Pre-edited clip already has the chosen music mixed in -- used as-is,
+    // see `preEdited` handling in process-media.mjs (no separate music mux).
+    videoParts: ["Heddy - edited .mp4"],
     trimStart: 0,
-    music: "heddy 0102-0130.opus",
-    musicStart: 62,
+    preEdited: true,
     mainCharacter: "feng",
     altCharacters: ["heihachi", "reina"],
     // "voin valmentaa ketä vaan hahmoa pelin aloittaneelle" -- can coach
