@@ -164,6 +164,7 @@ export const coaches = [
     // "Eddy & Bryan" -- both named together as mains; Eddy picked first.
     mainCharacter: "eddy",
     altCharacters: ["bryan", "armor-king", "jack-8"],
+    helpsAllCharacters: true,
   },
   {
     key: "Julumettu / Joulumehu",
@@ -241,6 +242,7 @@ export const coaches = [
     musicStart: 60,
     mainCharacter: "clive",
     altCharacters: ["victor"],
+    helpsAllCharacters: true,
   },
   {
     key: "DC: nhl_keissi. tekken nimi Nixxoks",

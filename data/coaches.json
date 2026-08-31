@@ -218,7 +218,7 @@
       "jack-8"
     ],
     "allCharacters": false,
-    "helpsAllCharacters": false
+    "helpsAllCharacters": true
   },
   {
     "slug": "julumettu",
@@ -350,7 +350,7 @@
       "victor"
     ],
     "allCharacters": false,
-    "helpsAllCharacters": false
+    "helpsAllCharacters": true
   },
   {
     "slug": "nixxoks",
