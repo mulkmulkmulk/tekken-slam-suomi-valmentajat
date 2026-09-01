@@ -85,10 +85,11 @@ export const coaches = [
     slug: "dankplank",
     name: "Dankplank",
     tag: null,
-    videoParts: ["dankplank.mkv"],
+    // Pre-edited clip already has the chosen music mixed in -- used as-is,
+    // see `preEdited` handling in process-media.mjs (no separate music mux).
+    videoParts: ["dankplank - edited.mp4"],
     trimStart: 0,
-    music: "dankplank 0004-0100.opus",
-    musicStart: 4,
+    preEdited: true,
     // "Bob" isn't in the Tekken 8 roster okizeme.gg covers (same call as
     // OmnidE) -- skipped from alt icons, still listed in the profile text.
     mainCharacter: "steve",
